@@ -1,10 +1,11 @@
 // 缇庨甯濆浗 - Service Worker (PWA 绂荤嚎鏀寔)
-const CACHE_NAME = 'food-empire-v2'
+const CACHE_NAME = 'food-empire-v3'
 const ASSETS = [
-  '/',
-  '/index.html',
-  '/manifest.json',
-  '/icons/icon.svg',
+  '/food-empire/',
+  '/food-empire/index.html',
+  '/food-empire/manifest.json',
+  '/food-empire/icons/icon.svg',
+  '/food-empire/restaurants.json',
 ]
 
 // 瀹夎: 缂撳瓨鏍稿績璧勬簮
