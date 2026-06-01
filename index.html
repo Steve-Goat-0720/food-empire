@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json" />
+
+    <!-- Apple iOS 鍏ㄥ睆妯″紡 -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="缇庨甯濆浗" />
+    <link rel="apple-touch-icon" href="/icons/icon.svg" />
+
+    <!-- 涓婚棰滆壊 -->
+    <meta name="theme-color" content="#FF6B9D" />
+    <meta name="msapplication-TileColor" content="#FF6B9D" />
+
+    <!-- 鍥炬爣 -->
+    <link rel="icon" type="image/svg+xml" href="/icons/icon.svg" />
+
+    <title>缇庨甯濆浗 - Food Empire</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+    <!-- iOS 瀹夊叏鍖哄煙閫傞厤 -->
+    <style>
+      body { padding-top: env(safe-area-inset-top); padding-bottom: env(safe-area-inset-bottom); }
+    </style>
+
+    <!-- 瀹夎鎻愮ず -->
+    <script>
+      // 妫€娴嬫槸鍚﹀凡瀹夎鍒颁富灞忓箷
+      if (window.matchMedia('(display-mode: standalone)').matches) {
+        document.documentElement.classList.add('standalone')
+      }
+      // iOS 瀹夎鎻愮ず (鍦ㄩ娆′娇鐢ㄦ椂寮瑰嚭)
+      let deferredPrompt = null
+      window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault()
+        deferredPrompt = e
+        // 3绉掑悗鏄剧ず瀹夎鎻愮ず
+        setTimeout(() => {
+          if (deferredPrompt && !window.matchMedia('(display-mode: standalone)').matches) {
+            const banner = document.createElement('div')
+            banner.style.cssText = 'position:fixed;bottom:80px;left:50%;transform:translateX(-50%);z-index:99999;background:white;border-radius:20px;padding:16px 20px;box-shadow:0 4px 24px rgba(0,0,0,0.15);display:flex;align-items:center;gap:12px;font-family:sans-serif;font-size:14px;max-width:90vw;'
+            banner.innerHTML = '<span style="font-size:28px">馃崝</span><div><b>娣诲姞鍒颁富灞忓箷</b><br><span style="font-size:12px;color:#888">闅忔椂闅忓湴鍙戠幇缇庨</span></div><button id="install-btn" style="background:#FF6B9D;color:white;border:none;border-radius:12px;padding:8px 16px;font-weight:bold;cursor:pointer;white-space:nowrap">瀹夎</button>'
+            document.body.appendChild(banner)
+            document.getElementById('install-btn').onclick = () => {
+              deferredPrompt.prompt()
+              deferredPrompt = null
+              banner.remove()
+            }
+            setTimeout(() => banner.remove(), 15000)
+          }
+        }, 3000)
+      })
+      // 娉ㄥ唽 Service Worker
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').catch(() => {})
+        })
+      }
+    </script>
+    <script type="module" crossorigin src="/assets/index-Do23_-TT.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-Bk4Rc02u.css">
+  </head>
+  <body class="bg-food-bg">
+    <div id="root"></div>
+  </body>
+</html>
