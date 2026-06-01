@@ -2,7 +2,8 @@
   "name": "缇庨甯濆浗 - Food Empire",
   "short_name": "缇庨甯濆浗",
   "description": "鍏ㄧ悆缇庨鍦板浘绀句氦骞冲彴 鈥?鍙戠幇缇庨銆佷笂浼犵収鐗囥€佸疄鏃朵簰鍔?,
-  "start_url": "/",
+  "start_url": "/food-empire/",
+  "scope": "/food-empire/",
   "display": "standalone",
   "orientation": "portrait-primary",
   "background_color": "#FFF5F5",
@@ -11,34 +12,16 @@
   "categories": ["food", "social", "travel"],
   "icons": [
     {
-      "src": "/icons/icon.svg",
+      "src": "/food-empire/icons/icon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any maskable"
-    },
-    {
-      "src": "/icons/icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "/icons/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png"
-    }
-  ],
-  "screenshots": [
-    {
-      "src": "/icons/screenshot.png",
-      "sizes": "1170x2532",
-      "type": "image/png",
-      "platform": "ios"
     }
   ],
   "related_applications": [],
   "prefer_related_applications": false,
   "share_target": {
-    "action": "/",
+    "action": "/food-empire/",
     "method": "GET",
     "params": {
       "title": "title",
